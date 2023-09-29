@@ -108,3 +108,11 @@ main {
      font-weight: 700;
      text-shadow: 2px 2px rgba(50, 50, 70, 0.5);
 }
+
+.error-message {
+    margin-top: 40px;
+    color: black;
+    font-size: 25px; 
+    font-weight: 300;
+    text-align: center; 
+}

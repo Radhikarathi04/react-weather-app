@@ -1,4 +1,4 @@
- import React, { useState } from 'react';
+ import React, { useState , useEffect } from 'react';
  import './WeatherApp.css';
  import axios from 'axios';
  import {CirclesWithBar} from 'react-loader-spinner';
@@ -16,6 +16,9 @@ function WeatherApp () {
   });
   const [buttonText, setButtonText] = useState('Click Me');
 
+  // useEffect((setWeather) => ({
+
+  // }))
   
   // search function with event handler
   const search = async (event) => {
@@ -55,7 +58,7 @@ function WeatherApp () {
     let days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
 
-    const date = `${days[d.getDay()]} ${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
+    const date = `${days[d.getDay()]}, ${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
     
     return date;
     }
@@ -82,8 +85,13 @@ function WeatherApp () {
         </div>
 
         {/* <button onClick={() => changeText(weather.data.name)}>{buttonText}</button> */}
-        
 
+       
+        {/* Error handling */}
+        {weather.error && (
+          <div className="error-message">Sorry, city not found. Please try again.</div>
+        )}
+        
         {weather && weather.data && weather.data.main && (
         <div>
           <div className="location-box">
